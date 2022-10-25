@@ -26,12 +26,12 @@ return new class extends Migration
             
             //relacionamos con nuestras otras tablas
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('categoria_id');
 
             //agregamos restricción de llave foranea
             //indicamos que si el usuario se da de baja del sistema los cursos regisrados por el, también serán eliminados
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             
             
             $table->timestamps();
