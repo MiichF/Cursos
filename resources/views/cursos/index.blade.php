@@ -21,7 +21,7 @@
 
                         <!-- poner el nombre de los cursos en cada imagen -->
                         <h1 class="text-4xl text-black leading-8 font-bold">
-                            <a>
+                            <a href="{{route('cursos.show',$curso)}}">
                                 {{$curso->name}}
                             </a>
                         </h1>

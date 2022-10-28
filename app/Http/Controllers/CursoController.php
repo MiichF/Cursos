@@ -12,4 +12,16 @@ class CursoController extends Controller
 
         return view('cursos.index', compact('cursos'));
     }
+
+    public function show(Curso $curso){
+
+        $similares = Curso::where('categoria_id', $curso->categoria_id)
+                                ->where('status',2)
+                                ->where('id','!=',$curso->id)
+                                ->latest('id')
+                                ->take(4)
+                                ->get();
+
+        return view('cursos.show', compact('curso','similares'));
+       }
 }

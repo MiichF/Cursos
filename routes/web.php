@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[CursoController::class, 'index'])->name('cursos.index');
 
+//ruta show
+Route::get('/cursos/{curso}',[CursoController::class,'show'])->name('cursos.show');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -25,3 +27,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
