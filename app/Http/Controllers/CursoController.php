@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -24,4 +25,13 @@ class CursoController extends Controller
 
         return view('cursos.show', compact('curso','similares'));
        }
+
+    public function categoria(Categoria $categoria){
+        $cursos = Curso::where('categoria_id', $categoria->id)
+                        ->where('status', 2)
+                        ->latest('id')
+                        ->paginate(4);
+
+        return view('cursos.categoria', compact('cursos', 'categoria'));
+    }
 }

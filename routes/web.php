@@ -18,6 +18,9 @@ Route::get('/',[CursoController::class, 'index'])->name('cursos.index');
 
 //ruta show
 Route::get('/cursos/{curso}',[CursoController::class,'show'])->name('cursos.show');
+//ruta filtrar
+Route::get('/categoria/{categoria}', [CursoController::class, 'categoria'])->name('cursos.categoria');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
