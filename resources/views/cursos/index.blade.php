@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout titulo="Menu Principal">
 
     <div class="container py-8">
         <!-- mostrar cursos, su imagen y etiquetas -->
@@ -13,14 +13,14 @@
                         <!-- poner las etiquetas de cada curso -->
                         <div>
                             @foreach($curso->etiquetas as $etiqueta)
-                                <a class="inline-block px-3 h-6 bg-{{$etiqueta->color}}-600 text-white rounded-full">
+                                <a href="{{route('cursos.etiqueta', $etiqueta)}}" class="inline-block px-3 h-6 bg-{{$etiqueta->color}}-600 text-white rounded-full">
                                     {{$etiqueta->name}}
                                 </a>
                             @endforeach
                         </div>
 
                         <!-- poner el nombre de los cursos en cada imagen -->
-                        <h1 class="text-4xl text-black leading-8 font-bold">
+                        <h1 class="text-4xl text-black leading-8 font-bold mt-2">
                             <a href="{{route('cursos.show',$curso)}}">
                                 {{$curso->name}}
                             </a>

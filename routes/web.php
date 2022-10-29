@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Rules\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,10 @@ Route::get('/',[CursoController::class, 'index'])->name('cursos.index');
 
 //ruta show
 Route::get('/cursos/{curso}',[CursoController::class,'show'])->name('cursos.show');
-//ruta filtrar
+//ruta filtrar categoria
 Route::get('/categoria/{categoria}', [CursoController::class, 'categoria'])->name('cursos.categoria');
+//ruta filtrar etiqueta
+Route::get('/etiqueta/{etiqueta}', [CursoController::class, 'etiqueta'])->name('cursos.etiqueta');
 
 Route::middleware([
     'auth:sanctum',

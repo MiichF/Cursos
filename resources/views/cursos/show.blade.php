@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout titulo="Ver Curso">
 
     <div class="container py-8">
         <h1 class="text-4xl font-bold text-gray-600"> {{$curso->name}}  </h1>

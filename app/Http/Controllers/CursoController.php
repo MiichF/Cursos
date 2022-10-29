@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Curso;
+use App\Models\Etiqueta;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -33,5 +34,13 @@ class CursoController extends Controller
                         ->paginate(4);
 
         return view('cursos.categoria', compact('cursos', 'categoria'));
+    }
+
+    public function etiqueta(Etiqueta $etiqueta){
+        $cursos = $etiqueta->cursos()->where('status', 2)
+                                ->latest('id')
+                                ->paginate(4);
+
+        return view('cursos.etiqueta', compact('cursos', 'etiqueta'));
     }
 }
