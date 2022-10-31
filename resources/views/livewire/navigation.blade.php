@@ -88,6 +88,9 @@
               <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
                 Tu Perfil
               </a>
+              <a href="{{ route('admin.home') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                Dashboard
+              </a>
               
               <form method="POST" action="{{ route('logout') }}" x-data>
                 @csrf
