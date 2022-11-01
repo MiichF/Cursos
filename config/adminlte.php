@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/logo1.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -313,21 +313,21 @@ return [
         ],
         [
             'text'        => 'Configuración',
-            'url'         => 'admin/pages',
+            'url'         => 'admin',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Opciones de administrador'],
         [
             'text' => 'Cuenta',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Cambiar password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Categorias',
+            'route'  => 'admin.categorias.index',
+            'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text'    => 'multilevel',
