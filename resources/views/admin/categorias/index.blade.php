@@ -27,14 +27,15 @@
                 <tbody>
                     @foreach($categorias as $categoria)
                         <tr > 
-                            <td>{{ $categoria->id }}</td>
-                            <td>{{ $categoria->name }}</td>
+                            <td>{{$categoria->id}}</td>
+                            <td>{{$categoria->name}}</td>
                             <td width="10px"> <a class= "btn btn-primary btn-sm" href = "{{route('admin.categorias.edit',$categoria)}}">Editar</a></td>
-                            <td width="10px"> <form action="{{route('admin.categorias.destroy',$categoria)}}" method="POST">
+                            <td width="10px"> <form action="{{route('admin.categorias.destroy', $categoria)}}" method="POST">
                             @csrf    
                             @method('delete')
                             <button type= "submit" class="btn btn-danger btn-sm">Eliminar</button>
-                            </td>
+</form>    
+                        </td>
                     @endforeach   
     </div>
    </div>
