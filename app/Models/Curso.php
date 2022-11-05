@@ -9,8 +9,7 @@ class Curso extends Model
 {
     use HasFactory;
     //asignación masiva, incamos campos que no quueremos que se llenen con asignacion masiva
-    protected $guarded = ['id','created_at','updated_at'];
-
+    protected $fillable = ['name', 'slug','extract','body','status','user_id','categoria_id'];
     //Relacion 1 a muchos inversa
 
     public function user(){

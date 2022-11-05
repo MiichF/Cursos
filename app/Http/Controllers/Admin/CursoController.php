@@ -46,7 +46,7 @@ class CursoController extends Controller
         $curso = Curso::create($request->all());
 
         if($request->etiquetas){
-            $curso->etiquetas()->attach([$request->etiquetas]);
+            $curso ->etiquetas()->attach($request->etiquetas);
         }
         return redirect()->route('admin.cursos.edit', $curso);
     }
