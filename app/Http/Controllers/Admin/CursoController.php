@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\Etiqueta;
+use App\Models\Curso;
+
 use App\Http\Requests\StoreCursoRequest;
 class CursoController extends Controller
 {
@@ -41,7 +43,12 @@ class CursoController extends Controller
      */
     public function store(StoreCursoRequest $request)
     {
-        return "Las valdaciones pasaron con exito";
+        $curso = Curso::create($request->all());
+
+        if($request->etiquetas){
+            $curso->etiquetas()->attach([$request->etiquetas]);
+        }
+        return redirect()->route('admin.cursos.edit', $curso);
     }
 
     /**

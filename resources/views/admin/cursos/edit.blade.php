@@ -14,13 +14,7 @@
     @endif
     <div class="card">
         <div class="card-body">
-            {!! Form::model($etiqueta,['route'=>['admin.etiquetas.update', $etiqueta], 'method' => 'put']) !!}
-        
-                @include('admin.etiquetas.partials.form')
-
-                {!!Form::submit('Actualizar etiqueta',['class'=>'btn btn-primary']) !!}
-            {!! Form::close()!!}
-         
+           
    </div>
 
 

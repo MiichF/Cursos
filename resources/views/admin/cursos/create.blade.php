@@ -10,7 +10,7 @@
     <div class="card-body">
         {!! Form::open(['route'=>'admin.cursos.store','autocomplete'=>'off'])!!}
             
-            {!! Form::hidden('user_id', auth()->user())!!}
+            {!! Form::hidden('user_id', auth()->user()->id)!!}
         
             <div class="form-group">
                 {!! Form::label('name','Nombre:')!!}
@@ -32,7 +32,7 @@
             </div>
            <div class="form-group">
             {!! Form::label('categoria_id','Categoria')!!}
-            {!! Form::select('categoria_id',$categorias,null,['class' => 'form-control'])!!}
+            {!! Form::select('categoria_id',$categorias,null,['class' => 'form-control']) !!}
 
             @error('categoria_id')
             <small class="text-danger">
@@ -46,7 +46,7 @@
 
             @foreach($etiquetas as $etiqueta)
             <label class="mr-2">
-                {!! Form::checkbox('etiquetas[]',$etiqueta->id,null)!!}
+                {!! Form::checkbox('etiquetas[]',$etiqueta->id,null) !!}
                 {{$etiqueta->name}}
 
             </label>

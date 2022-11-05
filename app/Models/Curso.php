@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     use HasFactory;
+    //asignación masiva, incamos campos que no quueremos que se llenen con asignacion masiva
+    protected $guarded = ['id','created_at','updated_at'];
 
     //Relacion 1 a muchos inversa
 

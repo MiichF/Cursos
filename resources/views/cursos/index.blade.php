@@ -6,7 +6,7 @@
             @foreach ($cursos as $curso)
                 <!-- poner las imagenes de la BD de cada curso de fondo -->
                 <article class="w-full h-80 bg-cover bg-center @if($loop->first) md:col-span-2 @endif" 
-                style="background-image: url({{ Storage::url($curso->image->url) }})">
+                style="background-image: url(@if($curso->image) {{Storage::url($curso->image->url) }}@else https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg @endif)">
                 
                     <div class="w-full h-full px-8 flex flex-col justify-center">
 
