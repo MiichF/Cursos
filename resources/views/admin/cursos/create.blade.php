@@ -97,8 +97,10 @@
                      </div>
                      @error('file')
                      <span class = "text-danger">{{$message}}</span>
+                @enderror
                      <p> Por favor asegurate de usar una imagen en relación al curso, que sea de buena calidad</p>
-                </div>
+                
+                    </div>
 
             </div>
            <div class="form-group">
