@@ -3,9 +3,9 @@
 
 @section('content_header')
 
-    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.etiquetas.create')}}">Nueva etiqueta</a>
-
-    <h1>Listado de Cursos</h1>  
+<a class="btn btn-primary  float-right" href="{{route('admin.cursos.create')}}" >Nuevo Curso </a>
+    <h1>Lista de cursos</h1>
+    
 @stop
 
 @section('content')

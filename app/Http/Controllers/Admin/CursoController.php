@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Categoria;
+use App\Models\Etiqueta;
+use App\Http\Requests\StoreCursoRequest;
 class CursoController extends Controller
 {
     /**
@@ -24,7 +26,11 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('admin.cursos.create');
+
+        $categorias = Categoria::pluck('name', 'id');
+        $etiquetas = Etiqueta::all();
+
+        return view('admin.cursos.create', compact('categorias','etiquetas'));
     }
 
     /**
@@ -33,9 +39,9 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCursoRequest $request)
     {
-        //
+        return "Las valdaciones pasaron con exito";
     }
 
     /**
