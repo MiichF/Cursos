@@ -4,18 +4,22 @@
         <h1 class="text-4xl font-bold text-gray-600"> {{$curso->name}}  </h1>
         
         <div class="text-lg text-gray-500 mb-2">
-            {{$curso->extract}}
+            {!!$curso->extract!!}
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <!-- contenido principal -->
             <div class="lg:col-span-2">
             
                 <figure>
-                    <img class="w-full h-80 object-cover object-center" src="{{Storage::url($curso->image->url)}}" alt="">
+                    @if ($curso->image)
+                        <img class="w-full h-80 object-cover object-center" src="{{Storage::url($curso->image->url)}}" alt="">
+                    @else
+                        <img class="w-full h-80 object-cover object-center" src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg" alt="">
+                    @endif
                 </figure> 
 
                 <div class="text-base text-gray-500 mt-4">
-                {{$curso->body}}
+                {!!$curso->body!!}
                 </div>    
             
             </div>
@@ -27,7 +31,11 @@
                 @foreach($similares as $similar)
                     <li class="mb-4">
                         <a class= "flex" href="{{route('cursos.show',$similar)}}">
+                       @if($similar->image)
                         <img class="w-36 h-20 objcet-cover object-center" src="{{Storage::url($similar->image->url)}}" alt="">
+                    @else
+                    <img class="w-36 h-20 objcet-cover object-center" src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg" alt="">
+                    @endif  
                         <span class="ml-2 text-gray-600">{{$similar->name}}</span>
                     </a>
                     </li>

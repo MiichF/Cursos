@@ -8,6 +8,8 @@ use App\Models\Categoria;
 use App\Models\Etiqueta;
 use App\Models\Curso;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Requests\StoreCursoRequest;
 class CursoController extends Controller
 {
@@ -43,13 +45,22 @@ class CursoController extends Controller
      */
     public function store(StoreCursoRequest $request)
     {
+       //Storage::put('cursos',$contents);
         $curso = Curso::create($request->all());
-
+        
+        if($request->file('file')){
+            $url = Storage::put('cursos',$request->file('file'));
+            $curso->image()->create([
+                'url' => $url
+            ]);
+        }
         if($request->etiquetas){
             $curso ->etiquetas()->attach($request->etiquetas);
         }
         return redirect()->route('admin.cursos.edit', $curso);
+   
     }
+
 
     /**
      * Display the specified resource.

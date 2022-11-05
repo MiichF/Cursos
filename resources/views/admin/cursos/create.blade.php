@@ -8,7 +8,7 @@
 @section('content')
    <div class="card">
     <div class="card-body">
-        {!! Form::open(['route'=>'admin.cursos.store','autocomplete'=>'off'])!!}
+        {!! Form::open(['route'=>'admin.cursos.store','autocomplete'=>'off', 'files'=>true])!!}
             
             {!! Form::hidden('user_id', auth()->user()->id)!!}
         
@@ -83,7 +83,24 @@
             @enderror
             
         </div>
+        
+            <div class="row mb-5">
+                <div class="col">
+                <div class="image-wrapper">   
+                <img id = "picture"src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg" alt = "">
+                </div>   
+                </div>
+                <div class="col">
+                     <div class="form-group">
+                        {!! Form::label('file','Imagen del curso') !!}
+                        {!! Form::file('file',['class'=>'form-control-file','accept'=>'image/*']) !!}
+                     </div>
+                     @error('file')
+                     <span class = "text-danger">{{$message}}</span>
+                     <p> Por favor asegurate de usar una imagen en relación al curso, que sea de buena calidad</p>
+                </div>
 
+            </div>
            <div class="form-group">
            {!! Form::label('extract','Contenido del curso:')!!}
            {!! Form::textarea('extract',null,['class'=>'form-control'])!!}
@@ -113,6 +130,21 @@
    </div>
 
 @stop
+@section('css')
+    <style>
+        .image-wrapper{
+            position: relative;
+            padding-bottom:60.25%;
+        }
+        .image-wrapper img{
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+            
+        }
+    </style>
+@endsection
 
 @section('js')
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
@@ -138,6 +170,18 @@
             console.error( error );
         } );
 
+        //cambiar imagen automtico
+        document.getElementById("file").addEventListener('change',cambiarImagen);
+
+        function cambiarImagen(event) {
+            var file = event.target.files[0];
+
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById("picture").setAttribute('src',event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
         </script>
 @endsection 
 
