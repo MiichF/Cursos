@@ -17,6 +17,8 @@ class CursoController extends Controller
 
     public function show(Curso $curso){
 
+        $this->authorize('published', $curso);
+
         $similares = Curso::where('categoria_id', $curso->categoria_id)
                                 ->where('status',2)
                                 ->where('id','!=',$curso->id)

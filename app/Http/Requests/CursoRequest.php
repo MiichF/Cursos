@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Curso;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCursoRequest extends FormRequest
+class CursoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,13 +14,13 @@ class StoreCursoRequest extends FormRequest
      */
     public function authorize()
     {
-
-        if($this->user_id == auth()->user()->id){
+        return true;
+        /*if($this->user_id == auth()->user()->id){
             return true;
 
         }else{
             return false;
-        }
+        }*/
 
     }
     
@@ -31,6 +32,10 @@ class StoreCursoRequest extends FormRequest
      */
     public function rules()
     {
+
+        $curso = $this->route()->parameter('curso');
+        $curso = Curso::find($curso);
+
         $rules = [
             'name' => 'required',
             'slug' => 'required|unique:cursos',
@@ -38,6 +43,11 @@ class StoreCursoRequest extends FormRequest
             'file' =>'image'
             //
         ];
+
+        if($curso){
+            $rules['slug'] = 'required|unique:cursos,slug,' . $curso->id;
+        }
+
         if ($this->status == 2) {
             $rules = array_merge($rules, [
                 'categoria_id' => 'required',

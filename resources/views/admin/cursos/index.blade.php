@@ -9,6 +9,13 @@
 @stop
 
 @section('content')
+    @if(session('info'))
+    <div class="alert alert bg-primary">
+        <strong>{{session('info')}}</strong>
+
+    </div>
+    @endif
+    
     @livewire('admin.cursos-index')
 
 @stop

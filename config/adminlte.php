@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>Cour</b>line<b>free</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/logo1.png',
+    'logo_img' => 'penaut.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/logo1.png',
+            'path' => 'penaut.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -320,11 +320,11 @@ return [
         ],
 
         ['header' => 'Opciones de administrador'],
-        [
+        /* [
             'text' => 'Cuenta',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
-        ],
+        ], */
         [
             'text' => 'Categorias',
             'route'  => 'admin.categorias.index',

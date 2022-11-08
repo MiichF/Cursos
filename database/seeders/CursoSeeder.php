@@ -16,8 +16,8 @@ class CursoSeeder extends Seeder
      */
     public function run()
     {
-        //crear 10 cursos
-        $cursos = Curso::factory(20)->create();
+        //crear 30 cursos
+        $cursos = Curso::factory(30)->create();
 
         //a cada curso asignarle una imagen
         foreach ($cursos as $curso){

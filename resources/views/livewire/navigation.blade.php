@@ -34,9 +34,9 @@
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 
         <!-- Logotipo -->
-        <a href="/" class="flex flex-shrink-0 items-center">
-          <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+        <a href="/" class="flex flex-shrink-0 items-center text-white font-medium">
+          <img class="block h-12 w-auto " src="penaut.png" alt="Your Company"> <b>Cour</b>line<b>free</b>
+          <img class="hidden h-12 w-auto " src="penaut.png" alt="Your Company">
         </a>
 
         <!-- menu -->
@@ -45,7 +45,7 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <!-- <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a> -->
             @foreach ($categorias as $categoria)
-            <a href="{{ route('cursos.categoria', $categoria) }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">{{ $categoria->name }}</a>
+            <a href="{{ route('cursos.categoria', $categoria) }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium">{{ $categoria->name }}</a>
             @endforeach
           </div>
         </div>

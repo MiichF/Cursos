@@ -10,7 +10,8 @@ use App\Models\Curso;
 
 use Illuminate\Support\Facades\Storage;
 
-use App\Http\Requests\StoreCursoRequest;
+use App\Http\Requests\CursoRequest;
+
 class CursoController extends Controller
 {
     /**
@@ -43,7 +44,7 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCursoRequest $request)
+    public function store(CursoRequest $request)
     {
        //Storage::put('cursos',$contents);
         $curso = Curso::create($request->all());
@@ -54,9 +55,11 @@ class CursoController extends Controller
                 'url' => $url
             ]);
         }
+
         if($request->etiquetas){
             $curso ->etiquetas()->attach($request->etiquetas);
         }
+
         return redirect()->route('admin.cursos.edit', $curso);
    
     }
@@ -79,9 +82,17 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($curso)
+    public function edit($id)
     {
-        return view('admin.cursos.edit', compact('curso'));
+        
+        $curso = Curso::find($id);
+
+        $this->authorize('author', $curso);
+
+        $categorias = Categoria::pluck('name', 'id');
+        $etiquetas = Etiqueta::all();
+
+        return view('admin.cursos.edit', compact('curso','categorias','etiquetas'));
     }
 
     /**
@@ -91,9 +102,35 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $curso)
+    public function update(CursoRequest $request, $id)
     {
-        //
+        $curso = Curso::find($id);
+        $this->authorize('author', $curso);
+
+        $curso->update($request->all());
+
+        if($request->file('file')){
+            $url = Storage::put('cursos',$request->file('file'));
+
+            if($curso->image){
+                Storage::delete($curso->image->url);
+
+                $curso->image->update([
+                    'url' => $url
+                ]);
+
+            }else{
+                $curso->image()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+
+        if($request->etiquetas){
+            $curso ->etiquetas()->sync($request->etiquetas);
+        }
+
+        return redirect()->route('admin.cursos.edit', $curso)->with('info','El curso se actualizo exitosamente');
     }
 
     /**
@@ -102,8 +139,12 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($curso)
+    public function destroy($id)
     {
-        //
+        $curso = Curso::find($id);
+        $this->authorize('author', $curso);
+
+        $curso->delete();
+        return redirect()->route('admin.cursos.index', $curso)->with('info','El curso se elimino exitosamente');
     }
 }
