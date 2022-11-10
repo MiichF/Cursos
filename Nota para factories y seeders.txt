@@ -1,10 +1,20 @@
-1.- Usar el comando
+1.- Usar los comandos para el funcionamiento de vistas e imagenes:
+
 php artisan storage:link
 
-2.- cambianr en el archivo .env 
+composer require jeroennoten/laravel-adminlte
+
+php artisan adminlte:install
+
+composer require laravelcollective/html
+
+----------Factory y seeder de Imagenes, correcto funcionamiento------------------
+
+1.- cambiar en el archivo .env la siguiente linea:
+
 "FILESYSTEM_DRIVER=local" por "public".
 
-3.-Abre el siguiente archivo: vendor\fakerphp\faker\src\Faker\Provider\Image.php y reemplaza las siguientes líneas de código:  
+2.-Abre el siguiente archivo: vendor\fakerphp\faker\src\Faker\Provider\Image.php y reemplaza las siguientes líneas de código:  
 
 public const BASE_URL = 'https://placehold.jp';  // cambie la URL
 
@@ -14,6 +24,6 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//nueva línea
 $success = curl_exec($ch) && curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200;//línea existente
 
 
-
-USAR SEEDERS:
-php artisan migration:refresh --seed
+NOTA:
+Para que se compile todo usar el comando:
+npm run dev
