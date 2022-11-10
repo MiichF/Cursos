@@ -9,5 +9,14 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    
+    //habilitar asignación masiva
+    protected $fillable = ['name', 'slug'];
+
+    public function getRouteKeyName(){
+        return "slug";
+    }
+    //Relación 1 a Muchos
+    public function cursos(){
+        return $this->hasMany(Curso::class);
+    }
 }

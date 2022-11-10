@@ -7,6 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Models\Curso;
+use App\Observers\CursoObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -27,7 +30,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Curso::observe(CursoObserver::class);
     }
 
     /**
