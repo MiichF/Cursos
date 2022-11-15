@@ -20,15 +20,21 @@ class UserSeeder extends Seeder
             'name' => 'Paulina Michelle Figueroa Noriega',
             'email' => 'paulina@test.com',
             'password' => bcrypt('12345678')
-        ]);
+        ])->assignRole('Admin');
 
         User::create([
             'name' => 'Oscar Leonardo Cárdenas Ulloa',
             'email' => 'leo@test.com',
             'password' => bcrypt('12345678')
-        ]);
+        ])->assignRole('Admin');
+
+        User::create([
+            'name' => 'Blogger',
+            'email' => 'blogger@test.com',
+            'password' => bcrypt('12345678')
+        ])->assignRole('Blogger');
 
         //crea usuarios aleatorios
-        User::factory(8)->create();
+        User::factory(7)->create();
     }
 }

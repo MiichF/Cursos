@@ -25,11 +25,14 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('cursos');
         Storage::makeDirectory('cursos');
 
+        $this->call(RoleSeeder::class);
+
         //llama los seeders y indica cantidades de creacion
         $this->call(UserSeeder::class);
         Categoria::factory(4)->create();
         Etiqueta::factory(8)->create();
         $this->call(CursoSeeder::class);
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
