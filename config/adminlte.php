@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>Cour</b>line<b>free</b>',
-    'logo_img' => 'penaut.png',
+    'logo_img' => 'https://cdn-icons-png.flaticon.com/512/6106/6106505.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',

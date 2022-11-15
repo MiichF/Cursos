@@ -8,6 +8,8 @@ php artisan adminlte:install
 
 composer require laravelcollective/html
 
+composer require spatie/laravel-permission
+
 ----------Factory y seeder de Imagenes, correcto funcionamiento------------------
 
 1.- cambiar en el archivo .env la siguiente linea:
@@ -32,3 +34,4 @@ npm run dev
 1.- Crear un usuario o bien usar los usuarios creados por seeders usuario:	leo@test.com o paulina@test.com		contraseña: 1234
 
 2.- acceder a cursos.test/admin
+

@@ -35,8 +35,8 @@
 
         <!-- Logotipo -->
         <a href="/" class="flex flex-shrink-0 items-center text-white font-medium">
-          <img class="block h-12 w-auto " src="penaut.png" alt="Your Company"> <b>Cour</b>line<b>free</b>
-          <img class="hidden h-12 w-auto " src="penaut.png" alt="Your Company">
+          <img class="block h-12 w-auto " src="https://cdn-icons-png.flaticon.com/512/6106/6106505.png" alt="Your Company"> <b>Cour</b>line<b>free</b>
+          <img class="hidden h-12 w-auto " src="https://cdn-icons-png.flaticon.com/512/6106/6106505.png" alt="Your Company"> 
         </a>
 
         <!-- menu -->
