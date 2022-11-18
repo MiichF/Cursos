@@ -319,6 +319,13 @@ return [
             'label_color' => 'success',
         ],
 
+        [
+            'text' => 'Usuarios',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-users fa-fw',
+            'active' => ['admin/users*'],
+        ],
+
         ['header' => 'Opciones de administrador'],
         /* [
             'text' => 'Cuenta',

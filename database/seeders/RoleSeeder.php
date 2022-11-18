@@ -21,15 +21,19 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name' => 'admin.home'])->syncRoles([$role1, $role2]);
 
-        Permission::create(['name' => 'admin.categorias.index'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.categorias.create'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.categorias.edit'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.categorias.destroy'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.users.index'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.users.update'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.users.edit'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'admin.etiquetas.index'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.etiquetas.create'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.etiquetas.edit'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.etiquetas.destroy'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.categorias.index'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.categorias.create'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.categorias.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.categorias.destroy'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.etiquetas.index'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.etiquetas.create'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.etiquetas.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.etiquetas.destroy'])->syncRoles([$role1]);
 
         Permission::create(['name' => 'admin.cursos.index'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.cursos.create'])->syncRoles([$role1, $role2]);
