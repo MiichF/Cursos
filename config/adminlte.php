@@ -324,9 +324,9 @@ return [
             'route'  => 'admin.users.index',
             'icon' => 'fas fa-users fa-fw',
             'active' => ['admin/users*'],
+            'can'   => 'admin.users.index',
         ],
 
-        ['header' => 'Opciones de administrador'],
         /* [
             'text' => 'Cuenta',
             'url'  => 'admin/settings',
@@ -337,12 +337,14 @@ return [
             'route'  => 'admin.categorias.index',
             'icon' => 'fab fa-fw fa-buffer',
             'active' => ['admin/categorias*'],
+            'can'   => 'admin.categorias.index',
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.etiquetas.index',
             'icon' => 'far fa-fw fa-bookmark',
             'active' => ['admin/etiquetas*'],
+            'can'   => 'admin.etiquetas.index',
         ],
 
         ['header' => 'Opciones de blog'],
@@ -350,11 +352,13 @@ return [
             'text'       => 'Lista de cursos',
             'route'        => 'admin.cursos.index',
             'icon'      => 'fas fa-fw fa-clipboard',
+            'can'   => 'admin.cursos.index',
         ],
         [
             'text'       => 'Crear curso nuevo',
             'route'        => 'admin.cursos.create',
             'icon'      => 'fas fa-fw fa-file',
+            'can'   => 'admin.cursos.create',
         ],
     ],
 
