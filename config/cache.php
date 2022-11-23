@@ -14,7 +14,7 @@ return [
     | not explicitly specified when executing a given caching function.
     |
     */
-
+//cada vez que se haga una consulta los resultados serán almacenados en archivos
     'default' => env('CACHE_DRIVER', 'file'),
 
     /*
