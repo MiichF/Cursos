@@ -9,6 +9,7 @@ use App\Models\Etiqueta;
 use App\Models\Curso;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 use App\Http\Requests\CursoRequest;
 
