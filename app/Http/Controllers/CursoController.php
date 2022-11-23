@@ -7,11 +7,25 @@ use App\Models\Curso;
 use App\Models\Etiqueta;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Cache;
 class CursoController extends Controller
 {
     public function index(){
-        $cursos = Curso::where('status', 2)->latest('id')->paginate(8);
+      //alamcenamiento de datos en memoria cache para carga rapida del sitio 
+        if(request()->page){
+            $key = 'cursos'.request()->page;
 
+        }else {
+            $key = 'cursos';
+        }
+        if(Cache::has($key)){
+            $cursos = Cache::get($key);
+        }else{
+            $cursos = Curso::where('status', 2)->latest('id')->paginate(8);
+            Cache::put($key,$cursos);
+        }
+
+      
         return view('cursos.index', compact('cursos'));
     }
 

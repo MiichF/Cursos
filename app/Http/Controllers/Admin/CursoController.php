@@ -48,7 +48,7 @@ class CursoController extends Controller
                 'url' => $url
             ]);
         }
-
+        Cache::flush();
         if($request->etiquetas){
             $curso ->etiquetas()->attach($request->etiquetas);
         }
@@ -104,6 +104,7 @@ class CursoController extends Controller
             $curso ->etiquetas()->sync($request->etiquetas);
         }
 
+        Cache::flush();
         return redirect()->route('admin.cursos.edit', $curso)->with('info','El curso se actualizo exitosamente');
     }
 
@@ -119,6 +120,8 @@ class CursoController extends Controller
         $this->authorize('author', $curso);
 
         $curso->delete();
+        
+        Cache::flush();
         return redirect()->route('admin.cursos.index', $curso)->with('info','El curso se elimino exitosamente');
     }
 }
