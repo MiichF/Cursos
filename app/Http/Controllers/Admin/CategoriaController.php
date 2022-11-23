@@ -8,6 +8,16 @@ use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
+    
+    public function __construct()
+    {//permisos para acceder al sitio segun tipo de usuario.
+        $this->middleware('can:admin.categorias.index')->only('index');
+        $this->middleware('can:admin.categorias.create')->only('create','store');
+        $this->middleware('can:admin.categorias.edit')->only('edit','update');
+        $this->middleware('can:admin.categorias.destroy')->only('destroy');
+      
+    }
+   
     /**
      * Display a listing of the resource.
      *
@@ -52,26 +62,13 @@ class CategoriaController extends Controller
     
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Categoria $categoria)
     {
         //
         return view('admin.categorias.show',compact('categoria'));
    
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Categoria $categoria)
+     public function edit(Categoria $categoria)
     {
         //
         return view('admin.categorias.edit', compact('categoria'));

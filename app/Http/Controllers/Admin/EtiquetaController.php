@@ -8,23 +8,20 @@ use App\Models\Etiqueta;
 
 class EtiquetaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {//permisos para acceder al sitio segun tipo de usuario.
+        $this->middleware('can:admin.etiquetas.index')->only('index');
+        $this->middleware('can:admin.etiquetas.create')->only('create','store');
+        $this->middleware('can:admin.etiquetas.edit')->only('edit','update');
+        $this->middleware('can:admin.etiquetas.destroy')->only('destroy');
+      
+    }
     public function index()
     {
         $etiquetas = Etiqueta::all();
 
         return view('admin.etiquetas.index', compact('etiquetas'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $colors = [
@@ -40,13 +37,6 @@ class EtiquetaController extends Controller
 
         return view('admin.etiquetas.create', compact('colors'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -60,12 +50,7 @@ class EtiquetaController extends Controller
         return redirect()->route('admin.etiquetas.edit', compact('etiqueta'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Etiqueta $etiqueta)
     {
         return view('admin.etiquetas.show', compact('etiqueta'));

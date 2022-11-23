@@ -14,21 +14,20 @@ use App\Http\Requests\CursoRequest;
 
 class CursoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {//permisos para acceder al sitio segun tipo de usuario.
+        $this->middleware('can:admin.cursos.index')->only('index');
+        $this->middleware('can:admin.cursos.create')->only('create','store');
+        $this->middleware('can:admin.cursos.edit')->only('edit','update');
+        $this->middleware('can:admin.cursos.destroy')->only('destroy');
+      
+    }
     public function index()
     {
         return view('admin.cursos.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
 
@@ -38,12 +37,6 @@ class CursoController extends Controller
         return view('admin.cursos.create', compact('categorias','etiquetas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CursoRequest $request)
     {
        //Storage::put('cursos',$contents);
@@ -65,23 +58,11 @@ class CursoController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($curso)
     {
         return view('admin.cursos.show', compact('curso'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         
@@ -95,13 +76,6 @@ class CursoController extends Controller
         return view('admin.cursos.edit', compact('curso','categorias','etiquetas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(CursoRequest $request, $id)
     {
         $curso = Curso::find($id);
