@@ -25,8 +25,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
-        $categorias =Categoria::all();
+        //solución problema n+1 consultas
+        $categorias =Categoria::with('cursos')->get();
 
         return view('admin.categorias.index', compact('categorias'));
     }

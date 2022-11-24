@@ -17,8 +17,8 @@ class EtiquetaController extends Controller
       
     }
     public function index()
-    {
-        $etiquetas = Etiqueta::all();
+    {   //solucion problema n+1 consultas
+        $etiquetas = Etiqueta::with('cursos')->get();
 
         return view('admin.etiquetas.index', compact('etiquetas'));
     }

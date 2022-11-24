@@ -33,7 +33,8 @@ class CursoController extends Controller
     {
 
         $categorias = Categoria::pluck('name', 'id');
-        $etiquetas = Etiqueta::all();
+        //solución problema n+1 consultas
+        $etiquetas = Etiqueta::with('cursos')->get();
 
         return view('admin.cursos.create', compact('categorias','etiquetas'));
     }
