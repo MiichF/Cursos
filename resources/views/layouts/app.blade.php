@@ -33,5 +33,7 @@
         @stack('modals')
 
         @livewireScripts
+
+        @livewire('footer')
     </body>
 </html>

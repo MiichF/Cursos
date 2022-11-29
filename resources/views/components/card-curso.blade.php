@@ -17,7 +17,7 @@
         </h1>
 
         <div class="text-gray-700 text-base">
-            {!! $curso->extract!!}
+            <b>Requisitos: </b> {!! $curso->extract!!}
         </div>
     </div>
 
