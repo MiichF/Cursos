@@ -1,7 +1,7 @@
 @props(['curso'])
 
 
-<article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+<article class="mb-8 bg-white-100 shadow-lg rounded-lg overflow-hidden">
     @if($curso->image)
     
     <img class="w-full h-72 object-cover object-center" src="{{Storage::url($curso->image->url)}}" alt="">
@@ -17,7 +17,7 @@
         </h1>
 
         <div class="text-gray-700 text-base">
-            <b>Requisitos: </b> {!! $curso->extract!!}
+            <b>Requisitos </b> {!! $curso->extract!!}
         </div>
     </div>
 
