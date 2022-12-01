@@ -23,7 +23,7 @@
 
     <div class="px-6 pt-4 pb-2">
         @foreach ($curso->etiquetas as $etiqueta)
-            <a href="{{route('cursos.etiqueta', $etiqueta)}}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-2">{{$etiqueta->name}}</a>
+            <a href="{{route('cursos.etiqueta', $etiqueta)}}" class="inline-block bg-{{$etiqueta->color}}-600 px-3 py-1 text-sm text-white rounded-full mr-2">{{$etiqueta->name}}</a>
         @endforeach
     </div>
 </article>

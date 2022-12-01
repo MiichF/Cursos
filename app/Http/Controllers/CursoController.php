@@ -18,8 +18,10 @@ class CursoController extends Controller
         }else {
             $key = 'cursos';
         }
+
         if(Cache::has($key)){
             $cursos = Cache::get($key);
+            $cursos = Curso::where('status', 2)->latest('id')->paginate(9);
         }else{
             $cursos = Curso::where('status', 2)->latest('id')->paginate(9);
             Cache::put($key,$cursos);
