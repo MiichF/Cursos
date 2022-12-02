@@ -30,8 +30,7 @@ Para que se compile todo usar el comando:
 
 npm run dev
 
-----------------CRUD-------------------------------
-1.- Crear un usuario o bien usar los usuarios creados por seeders usuario:	leo@test.com o paulina@test.com		contraseña: 1234
-
-2.- acceder a cursos.test/admin
+----------------Roles-------------------------------
+-> Usuarios administradores creados por el seeder usuario:	leo@test.com o paulina@test.com		contraseña: 12345678
+-> Usuario blogger creado por seeder: blogger@test.com     contraseña: 12345678
 
